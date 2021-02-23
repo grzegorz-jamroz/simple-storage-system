@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace SimpleStorageSystem\Document\Text;
 
+use SimpleStorageSystem\Document\Exception\UnableSaveFile;
 use SimpleStorageSystem\Utilities\Explorer;
 
 class Writer implements WriterInterface
@@ -22,6 +23,11 @@ class Writer implements WriterInterface
         }
 
         $file = fopen($this->filename, 'a+');
+
+        if (false === $file) {
+            throw new UnableSaveFile(sprintf('Unable to save file "%s".', $this->filename));
+        }
+
         fputs(
             $file,
             $content . "\n"
@@ -36,6 +42,11 @@ class Writer implements WriterInterface
         }
 
         $file = fopen($this->filename, 'w+');
+
+        if (false === $file) {
+            throw new UnableSaveFile(sprintf('Unable to save file "%s".', $this->filename));
+        }
+
         fwrite(
             $file,
             $content

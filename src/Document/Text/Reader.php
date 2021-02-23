@@ -21,6 +21,6 @@ class Reader implements ReaderInterface
             throw new FileNotExists(sprintf('File %s not exists.', $this->filename));
         }
 
-        return file_get_contents($this->filename) ?: "";
+        return file_get_contents($this->filename) ?: '';
     }
 }

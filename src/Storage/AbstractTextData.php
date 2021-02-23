@@ -24,7 +24,7 @@ abstract class AbstractTextData implements Text\EditorInterface
         try {
             return $this->reader->read();
         } catch (FileNotExists $e) {
-            return "";
+            return '';
         }
     }
 

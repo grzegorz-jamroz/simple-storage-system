@@ -30,7 +30,7 @@ class Explorer
             $dirPath .= '/';
         }
 
-        $files = glob($dirPath . '*', GLOB_MARK);
+        $files = glob($dirPath . '*', GLOB_MARK) ?: [];
 
         foreach ($files as $file) {
             if (is_dir($file)) {

@@ -21,7 +21,7 @@ class Reader implements ReaderInterface
             throw new FileNotExists(sprintf('File %s not exists.', $this->filename));
         }
 
-        $json = file_get_contents($this->filename);
+        $json = file_get_contents($this->filename) ?: '';
 
         return json_decode($json, true) ?? [];
     }

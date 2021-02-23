@@ -6,5 +6,8 @@ namespace SimpleStorageSystem\Document;
 
 interface Processor
 {
+    /**
+     * @return array<mixed, mixed>
+     */
     public function process(): array;
 }

@@ -6,5 +6,8 @@ namespace SimpleStorageSystem\Document\Json;
 
 interface ReaderInterface
 {
+    /**
+     * @return array<mixed, mixed>
+     */
     public function read(): array;
 }
