@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace SimpleStorageSystem\Document;
+namespace SimpleStorageSystem\Document\Json;
 
 use SimpleStorageSystem\Document\Exception\FileNotExists;
 
-class JsonReader implements Reader
+class Reader implements ReaderInterface
 {
     private string $filename;
 

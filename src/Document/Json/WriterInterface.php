@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace SimpleStorageSystem\Document;
+namespace SimpleStorageSystem\Document\Json;
 
-interface Writer
+interface WriterInterface
 {
     public function write(array $context): void;
 

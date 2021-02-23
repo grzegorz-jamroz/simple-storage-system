@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace SimpleStorageSystem\Document;
+namespace SimpleStorageSystem\Document\Json;
 
-interface Reader
+interface ReaderInterface
 {
     public function read(): array;
 }

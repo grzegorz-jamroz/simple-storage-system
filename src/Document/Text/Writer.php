@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace SimpleStorageSystem\Document;
+namespace SimpleStorageSystem\Document\Text;
 
 use SimpleStorageSystem\Utilities\Explorer;
 
-class JsonWriter implements Writer
+class Writer implements WriterInterface
 {
     private string $filename;
 
@@ -15,7 +15,7 @@ class JsonWriter implements Writer
         $this->filename = $filename;
     }
 
-    public function write(array $context): void
+    public function write(string $content): void
     {
         if (!is_file($this->filename)) {
             Explorer::createFileIfNotExists($this->filename);
@@ -24,12 +24,12 @@ class JsonWriter implements Writer
         $file = fopen($this->filename, 'a+');
         fputs(
             $file,
-            json_encode($context) . "\n"
+            $content . "\n"
         );
         fclose($file);
     }
 
-    public function overwrite(array $context): void
+    public function overwrite(string $content): void
     {
         if (!is_file($this->filename)) {
             Explorer::createFileIfNotExists($this->filename);
@@ -38,7 +38,7 @@ class JsonWriter implements Writer
         $file = fopen($this->filename, 'w+');
         fwrite(
             $file,
-            json_encode($context)
+            $content
         );
         fclose($file);
     }

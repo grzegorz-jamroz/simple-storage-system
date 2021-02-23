@@ -5,14 +5,12 @@ declare(strict_types=1);
 namespace SimpleStorageSystem\Storage;
 
 use SimpleStorageSystem\Document\Exception\FileNotExists;
-use SimpleStorageSystem\Document\JsonReader;
-use SimpleStorageSystem\Document\JsonWriter;
-use SimpleStorageSystem\Document\Editor;
+use SimpleStorageSystem\Document\Json as Json;
 
-abstract class AbstractJsonData implements Editor
+abstract class AbstractJsonData implements Json\EditorInterface
 {
-    protected JsonReader $reader;
-    protected JsonWriter $writer;
+    protected Json\Reader $reader;
+    protected Json\Writer $writer;
 
     public function __construct(string $filename)
     {

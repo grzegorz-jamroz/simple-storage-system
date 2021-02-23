@@ -1,12 +1,9 @@
 {
   "name": "grzegorz-jamroz/simple-storage-system",
   "description": "Library contains interfaces and basic implementation of JSON storage.",
-  "require": {
-    "php": ">=7.4"
-  },
   "autoload": {
     "psr-4": {
-      "SimpleStorageSystem\\": ""
+      "SimpleStorageSystem\\": "src/"
     }
   }
 }
