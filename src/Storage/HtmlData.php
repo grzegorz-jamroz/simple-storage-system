@@ -18,4 +18,10 @@ class HtmlData extends AbstractTextData
         $content = HtmlToolkit::cleanUp($content);
         $this->writer->write($content);
     }
+
+    public function overwrite(string $content): void
+    {
+        $content = HtmlToolkit::cleanUp($content);
+        $this->writer->overwrite($content);
+    }
 }
