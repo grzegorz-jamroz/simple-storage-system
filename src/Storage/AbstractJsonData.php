@@ -9,6 +9,7 @@ use SimpleStorageSystem\Document\Json as Json;
 
 abstract class AbstractJsonData implements Json\EditorInterface
 {
+    protected string $filename;
     protected Json\Reader $reader;
     protected Json\Writer $writer;
 
@@ -17,6 +18,7 @@ abstract class AbstractJsonData implements Json\EditorInterface
         $factory = new JsonDataFactory($filename);
         $this->reader = $factory->createReader();
         $this->writer = $factory->createWriter();
+        $this->filename = $filename;
     }
 
     public function read(): array
@@ -36,5 +38,10 @@ abstract class AbstractJsonData implements Json\EditorInterface
     public function overwrite(array $context): void
     {
         $this->writer->overwrite($context);
+    }
+
+    public function delete(): bool
+    {
+        return unlink($this->filename);
     }
 }
