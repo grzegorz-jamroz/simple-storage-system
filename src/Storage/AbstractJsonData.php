@@ -41,7 +41,7 @@ abstract class AbstractJsonData implements Json\EditorInterface
         array $context,
         int $flags = 0
     ): void {
-        $this->writer->write($context);
+        $this->writer->write($context, $flags);
     }
 
     /**
@@ -54,7 +54,7 @@ abstract class AbstractJsonData implements Json\EditorInterface
         array $context,
         int $flags = 0
     ): void {
-        $this->writer->overwrite($context);
+        $this->writer->overwrite($context, $flags);
     }
 
     public function delete(): bool
