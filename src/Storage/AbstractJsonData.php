@@ -32,6 +32,15 @@ abstract class AbstractJsonData implements Json\EditorInterface
     }
 
     /**
+     * @return array<mixed, mixed>
+     * @throws FileNotExists
+     */
+    public function getData(): array
+    {
+        return $this->reader->read();
+    }
+
+    /**
      * @param array $context
      * @param int $flags same as for json_encode
      *
