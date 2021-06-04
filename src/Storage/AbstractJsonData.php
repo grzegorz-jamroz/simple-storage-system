@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace SimpleStorageSystem\Storage;
 
 use SimpleStorageSystem\Document\Exception\FileNotExists;
+use SimpleStorageSystem\Document\Exception\UnableSaveFile;
 use SimpleStorageSystem\Document\Json as Json;
 
 abstract class AbstractJsonData implements Json\EditorInterface
@@ -30,13 +31,29 @@ abstract class AbstractJsonData implements Json\EditorInterface
         }
     }
 
-    public function write(array $context): void
-    {
+    /**
+     * @param array $context
+     * @param int $flags same as for json_encode
+     *
+     * @throws UnableSaveFile
+     */
+    public function write(
+        array $context,
+        int $flags = 0
+    ): void {
         $this->writer->write($context);
     }
 
-    public function overwrite(array $context): void
-    {
+    /**
+     * @param array $context
+     * @param int $flags same as for json_encode
+     *
+     * @throws UnableSaveFile
+     */
+    public function overwrite(
+        array $context,
+        int $flags = 0
+    ): void {
         $this->writer->overwrite($context);
     }
 

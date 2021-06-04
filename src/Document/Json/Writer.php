@@ -16,8 +16,14 @@ class Writer implements WriterInterface
         $this->filename = $filename;
     }
 
-    public function write(array $context): void
-    {
+    /**
+     * @param array<mixed, mixed> $context
+     * @param int $flags same as for json_encode
+     */
+    public function write(
+        array $context,
+        int $flags = 0
+    ): void {
         if (!is_file($this->filename)) {
             Explorer::createFileIfNotExists($this->filename);
         }
@@ -28,7 +34,7 @@ class Writer implements WriterInterface
             throw new UnableSaveFile(sprintf('Unable to save file "%s".', $this->filename));
         }
 
-        $json = json_encode($context) ?: '';
+        $json = json_encode($context, $flags) ?: '';
         fputs(
             $file,
             $json . "\n"
@@ -36,8 +42,14 @@ class Writer implements WriterInterface
         fclose($file);
     }
 
-    public function overwrite(array $context): void
-    {
+    /**
+     * @param array<mixed, mixed> $context
+     * @param int $flags same as for json_encode
+     */
+    public function overwrite(
+        array $context,
+        int $flags = 0
+    ): void {
         if (!is_file($this->filename)) {
             Explorer::createFileIfNotExists($this->filename);
         }
@@ -50,7 +62,7 @@ class Writer implements WriterInterface
 
         fwrite(
             $file,
-            json_encode($context) ?: ''
+            json_encode($context, $flags) ?: ''
         );
         fclose($file);
     }
