@@ -9,8 +9,11 @@ use SimpleStorageSystem\Utilities\HtmlToolkit;
 
 class HtmlData extends AbstractTextData
 {
+    private string $filename;
+
     public function __construct(string $filename)
     {
+        $this->filename = $filename;
         parent::__construct($filename);
     }
 
@@ -32,5 +35,10 @@ class HtmlData extends AbstractTextData
     public function getData(): string
     {
         return $this->reader->read();
+    }
+
+    public function delete(): bool
+    {
+        return unlink($this->filename);
     }
 }
