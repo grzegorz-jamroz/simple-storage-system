@@ -15,6 +15,9 @@ class Reader implements ReaderInterface
         $this->filename = $filename;
     }
 
+    /**
+     * @throws FileNotExists
+     */
     public function read(): string
     {
         if (!is_file($this->filename)) {
